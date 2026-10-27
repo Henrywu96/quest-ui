@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quest UI, the design system behind Henry Wu's portfolio</title>
+    <meta name="description" content="The colours, type, spacing and motion shared by Henry Wu's UI/UX portfolio and Quest Town, with the CSS, components and contrast checks to use them." />
+    <meta name="theme-color" content="#cfe9fb" />
+    <meta property="og:title" content="Quest UI" />
+    <meta property="og:description" content="The design system behind Henry Wu's portfolio and Quest Town." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="tokens/quest-ui.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="site/site.css" />
+    <script src="site/tokens-data.js" defer></script>
+    <script src="site/site.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="xp" aria-hidden="true"><span class="xp__fill"></span></div>
+
+    <header class="nav">
+      <div class="wrap nav__inner">
+        <a class="brand" href="#top" aria-label="Quest UI, back to top">
+          <svg class="brand__crest" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="7" fill="#202b45" />
+            <path d="M7 6 L25 6 L25 19 Q24.5 24.5 16 28 Q7.5 24.5 7 19 Z" fill="#ec6a4e" />
+            <rect x="10.5" y="10" width="4.5" height="4.5" rx="1" fill="#fff" />
+            <rect x="17" y="10" width="4.5" height="4.5" rx="1" fill="#ffd166" />
+            <rect x="10.5" y="16.5" width="4.5" height="4.5" rx="1" fill="#fff" />
+            <rect x="17" y="16.5" width="4.5" height="4.5" rx="1" fill="#fff" />
+          </svg>
+          <span class="brand__name">Quest UI</span>
+          <span class="brand__ver">v0.1</span>
+        </a>
+        <nav class="nav__links" aria-label="Sections">
+          <a href="#why">Why</a>
+          <a href="#foundations">Foundations</a>
+          <a href="#components">Components</a>
+          <a href="#use">Use it</a>
+        </nav>
+        <a class="qu-button qu-button--secondary qu-button--sm" href="https://github.com/henrywu96/quest-ui">GitHub</a>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- the first thing you see: one real component, before and after -->
+      <section class="hero" id="top">
+        <div class="wrap hero__grid">
+          <div class="hero__copy">
+            <span class="qu-badge qu-badge--legendary">Side quest</span>
+            <h1 class="qu-type-h1 hero__title">Quest UI</h1>
+            <p class="hero__lead">
+              The colours, type, spacing and motion behind my portfolio and Quest Town, named once and shared by both. Every text colour passes WCAG AA.
+            </p>
+            <div class="hero__actions">
+              <a class="qu-button qu-button--primary" href="#use">Get the tokens</a>
+              <a class="qu-button qu-button--secondary" href="https://github.com/henrywu96/quest-ui">View on GitHub</a>
+            </div>
+            <p class="hero__meta" data-fill="summary">Built from one JSON file.</p>
+          </div>
+
+          <div class="bench qu-card qu-card--glass qu-card--lg" data-state="v0">
+            <div class="bench__head">
+              <p class="bench__title">Primary button</p>
+              <div class="switch" role="radiogroup" aria-label="Show the button as it was, or with Quest UI">
+                <label><input type="radio" name="bench" value="before" /><span>Before</span></label>
+                <label><input type="radio" name="bench" value="v0" checked /><span>Quest UI v0</span></label>
+              </div>
+            </div>
+
+            <div class="bench__stage">
+              <figure class="bench__site">
+                <div class="bench__screen"><span class="bench__btn bench__btn--pf">View case study</span></div>
+                <figcaption>Portfolio</figcaption>
+              </figure>
+              <figure class="bench__site">
+                <div class="bench__screen"><span class="bench__btn bench__btn--qt">View case study</span></div>
+                <figcaption>Quest Town</figcaption>
+              </figure>
+            </div>
+
+            <table class="bench__facts">
+              <thead>
+                <tr><td></td><th scope="col">Before</th><th scope="col">Quest UI v0</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">White text on it</th>
+                  <td>3.12:1 <span class="flag flag--fail">Below AA</span></td>
+                  <td>5.21:1 <span class="flag flag--pass">Passes AA</span></td>
+                </tr>
+                <tr><th scope="row">Background</th><td>#ec6a4e</td><td>#ba472d</td></tr>
+                <tr><th scope="row">Height</th><td>45px and 40px</td><td>44px on both</td></tr>
+                <tr><th scope="row">Side padding</th><td>20px and 18px</td><td>24px on both</td></tr>
+                <tr><th scope="row">Shadow</th><td>Two different glows</td><td>shadow-glow-coral</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why" aria-labelledby="why-title">
+        <div class="wrap why">
+          <div class="why__copy">
+            <h2 class="qu-type-h2" id="why-title">Two sites, one system</h2>
+            <p>
+              My portfolio and Quest Town started from the same coral, navy and sky, then drifted apart one quick tweak at a time. In October 2026 I audited the code of both.
+            </p>
+            <p>
+              The same colour had a different name on each site, each site had grown its own set of font sizes, and some text was too faint to read comfortably. Quest UI keeps the look and gives every value one name.
+            </p>
+          </div>
+
+          <figure class="levels">
+            <ul class="levels__key" aria-hidden="true">
+              <li><i class="key key--pf"></i>Portfolio</li>
+              <li><i class="key key--qt"></i>Quest Town</li>
+              <li><i class="key key--v0"></i>Quest UI v0</li>
+            </ul>
+            <div class="levels__rows">
+              <div class="level" role="img" aria-label="Font sizes: portfolio 24, Quest Town 25, Quest UI v0 9" style="--pf: 24; --qt: 25; --v0: 9">
+                <span class="level__name">Font sizes</span>
+                <span class="bar bar--pf"><b>24</b></span><span class="bar bar--qt"><b>25</b></span><span class="bar bar--v0"><b>9</b></span>
+              </div>
+              <div class="level" role="img" aria-label="Shadows: portfolio 11, Quest Town 20, Quest UI v0 5" style="--pf: 11; --qt: 20; --v0: 5">
+                <span class="level__name">Shadows</span>
+                <span class="bar bar--pf"><b>11</b></span><span class="bar bar--qt"><b>20</b></span><span class="bar bar--v0"><b>5</b></span>
+              </div>
+              <div class="level" role="img" aria-label="Motion durations: portfolio 16, Quest Town 7, Quest UI v0 3" style="--pf: 16; --qt: 7; --v0: 3">
+                <span class="level__name">Motion durations</span>
+                <span class="bar bar--pf"><b>16</b></span><span class="bar bar--qt"><b>7</b></span><span class="bar bar--v0"><b>3</b></span>
+              </div>
+              <div class="level" role="img" aria-label="Corner radii: portfolio 10, Quest Town 15, Quest UI v0 5" style="--pf: 10; --qt: 15; --v0: 5">
+                <span class="level__name">Corner radii</span>
+                <span class="bar bar--pf"><b>10</b></span><span class="bar bar--qt"><b>15</b></span><span class="bar bar--v0"><b>5</b></span>
+              </div>
+              <div class="level" role="img" aria-label="Letter spacings: portfolio 8, Quest Town 8, Quest UI v0 3" style="--pf: 8; --qt: 8; --v0: 3">
+                <span class="level__name">Letter spacings</span>
+                <span class="bar bar--pf"><b>8</b></span><span class="bar bar--qt"><b>8</b></span><span class="bar bar--v0"><b>3</b></span>
+              </div>
+              <div class="level" role="img" aria-label="Text and background pairs below AA: portfolio 6, Quest Town 2, Quest UI v0 0" style="--pf: 6; --qt: 2; --v0: 0">
+                <span class="level__name">Text pairs below AA</span>
+                <span class="bar bar--pf"><b>6</b></span><span class="bar bar--qt"><b>2</b></span><span class="bar bar--v0"><b>0</b></span>
+              </div>
+            </div>
+            <figcaption>How many different values each site's code used, and how many Quest UI keeps.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section--foundations" id="foundations" aria-labelledby="foundations-title">
+        <div class="wrap">
+          <header class="section__head">
+            <h2 class="qu-type-h2" id="foundations-title">Foundations</h2>
+            <p>Everything here is drawn from <code>tokens.json</code>, the same file that builds the CSS. Select a name to copy its CSS variable.</p>
+          </header>
+          <noscript><p class="note">Turn on JavaScript to see the tokens drawn from tokens.json, or open <a href="tokens/quest-ui.css">quest-ui.css</a> directly.</p></noscript>
+
+          <div class="block">
+            <h3 class="qu-type-h3">Colour</h3>
+            <p class="block__lead">Seventeen colours. Coral 500 is for pictures and big shapes; text and buttons use the darker coral 600.</p>
+            <div class="swatches" data-render="colours"></div>
+          </div>
+
+          <div class="block">
+            <h3 class="qu-type-h3">What each colour is for</h3>
+            <p class="block__lead">Components ask for a role, such as body text or card surface, and each role points at one colour. Changing what a role points at changes it everywhere.</p>
+            <div class="roles" data-render="roles"></div>
+          </div>
+
+          <div class="block">
+            <h3 class="qu-type-h3">Contrast, checked on every build</h3>
+            <p class="block__lead">Text needs 4.5:1 against its background; large text and focus rings need 3:1. If any pair below drops under its minimum, the build stops before it writes the CSS.</p>
+            <div class="checks" data-render="contrast"></div>
+          </div>
+
+          <div class="block">
+            <h3 class="qu-type-h3">Type</h3>
+            <p class="block__lead">Fredoka for headings, Inter for everything else. Nine sizes, from 11px badges to the 64px page title.</p>
+            <div class="ramp" data-render="type"></div>
+          </div>
+
+          <div class="block">
+            <h3 class="qu-type-h3">Corners, spacing and shadows</h3>
+            <div class="shape">
+              <div class="shape__group">
+                <h4 class="qu-type-h4">Corner radius</h4>
+                <div class="radii" data-render="radius"></div>
+              </div>
+              <div class="shape__group">
+                <h4 class="qu-type-h4">Spacing, on a 4px grid</h4>
+                <div class="spaces" data-render="space"></div>
+              </div>
+              <div class="shape__group shape__group--wide">
+                <h4 class="qu-type-h4">Shadow</h4>
+                <div class="shadows" data-render="shadow"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <h3 class="qu-type-h3">Motion</h3>
+            <p class="block__lead">Durations and easing are CSS variables; springs are numbers for Motion in React. Press play to compare them side by side.</p>
+            <p class="note" data-fill="reduced" hidden>Your device asks for less motion, so the dots jump straight to the end.</p>
+            <div class="motion" data-render="motion"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="components" aria-labelledby="components-title">
+        <div class="wrap">
+          <header class="section__head">
+            <h2 class="qu-type-h2" id="components-title">Components</h2>
+            <p>Plain CSS classes in <code>css/components.css</code>, so they work in React, in Quest Town's interface and in plain HTML.</p>
+          </header>
+
+          <article class="comp" aria-labelledby="c-button">
+            <div class="comp__text">
+              <h3 class="qu-type-h3" id="c-button">Button</h3>
+              <p>Five kinds in two sizes. Keep to one primary button per screen, and give an icon button an <code>aria-label</code>.</p>
+            </div>
+            <div class="preview">
+              <div class="preview__row">
+                <a class="qu-button qu-button--primary" href="#c-button">View case study</a>
+                <button class="qu-button qu-button--secondary" type="button">Download résumé</button>
+                <button class="qu-button qu-button--ghost" type="button">Read the story</button>
+                <button class="qu-button qu-button--icon" type="button" aria-label="Copy link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7" /><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" /></svg>
+                </button>
+              </div>
+              <div class="preview__row">
+                <button class="qu-button qu-button--pill" type="button" aria-pressed="true" data-toggle-group="sky">Day</button>
+                <button class="qu-button qu-button--pill" type="button" aria-pressed="false" data-toggle-group="sky">Night</button>
+                <button class="qu-button qu-button--primary qu-button--sm" type="button">Dispatch train</button>
+                <button class="qu-button qu-button--secondary qu-button--sm" type="button" disabled>Coming soon</button>
+              </div>
+            </div>
+            <div class="code">
+              <button class="code__copy" type="button" data-copy-code>Copy</button>
+<pre><code>&lt;a class="qu-button qu-button--primary" href="/bridgly"&gt;View case study&lt;/a&gt;
+&lt;button class="qu-button qu-button--secondary"&gt;Download résumé&lt;/button&gt;
+&lt;button class="qu-button qu-button--ghost"&gt;Read the story&lt;/button&gt;
+&lt;button class="qu-button qu-button--icon" aria-label="Copy link"&gt;…&lt;/button&gt;
+&lt;button class="qu-button qu-button--pill" aria-pressed="true"&gt;Day&lt;/button&gt;
+&lt;button class="qu-button qu-button--primary qu-button--sm"&gt;Dispatch train&lt;/button&gt;</code></pre>
+            </div>
+          </article>
+
+          <article class="comp" aria-labelledby="c-card">
+            <div class="comp__text">
+              <h3 class="qu-type-h3" id="c-card">Card</h3>
+              <p>Solid cards sit on the page, glass cards float over the sky or the town, and inset cards hold small facts inside another card.</p>
+            </div>
+            <div class="preview preview--sky">
+              <div class="cards">
+                <a class="qu-card qu-card--solid" href="#c-card">
+                  <span class="qu-badge qu-badge--legendary">Legendary</span>
+                  <h4 class="qu-type-h3 card-title">Bridgly</h4>
+                  <p class="qu-type-body">A long-distance relationship app that helps couples stay connected.</p>
+                </a>
+                <div class="qu-card qu-card--glass">
+                  <span class="qu-badge qu-badge--rare">Rare</span>
+                  <h4 class="qu-type-h3 card-title">Toronto Transit Live</h4>
+                  <p class="qu-type-body">A live 3D map of every scheduled train across Toronto.</p>
+                </div>
+                <div class="qu-card qu-card--solid stack">
+                  <div class="qu-card qu-card--inset">
+                    <p class="qu-type-caption fact-label">Focus</p>
+                    <p class="qu-type-small fact-value">UI/UX Design, Web Design</p>
+                  </div>
+                  <div class="qu-card qu-card--inset">
+                    <p class="qu-type-caption fact-label">Tools</p>
+                    <p class="qu-type-small fact-value">Figma, Framer, FigJam, Maze</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="code">
+              <button class="code__copy" type="button" data-copy-code>Copy</button>
+<pre><code>&lt;a class="qu-card qu-card--solid" href="/bridgly"&gt;…&lt;/a&gt;
+&lt;div class="qu-card qu-card--glass"&gt;…&lt;/div&gt;
+&lt;div class="qu-card qu-card--inset"&gt;…&lt;/div&gt;</code></pre>
+            </div>
+          </article>
+
+          <article class="comp" aria-labelledby="c-badge">
+            <div class="comp__text">
+              <h3 class="qu-type-h3" id="c-badge">Badge</h3>
+              <p>Rarity marks how much a project shows. Legendary uses navy text on gold, because white on gold reads at only 2.17:1.</p>
+            </div>
+            <div class="preview">
+              <div class="preview__row" data-render="badges"></div>
+            </div>
+            <div class="code">
+              <button class="code__copy" type="button" data-copy-code>Copy</button>
+<pre><code>&lt;span class="qu-badge"&gt;Common&lt;/span&gt;
+&lt;span class="qu-badge qu-badge--rare"&gt;Rare&lt;/span&gt;
+&lt;span class="qu-badge qu-badge--epic"&gt;Epic&lt;/span&gt;
+&lt;span class="qu-badge qu-badge--legendary"&gt;Legendary&lt;/span&gt;</code></pre>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--use" id="use" aria-labelledby="use-title">
+        <div class="wrap">
+          <header class="section__head">
+            <h2 class="qu-type-h2" id="use-title">Use it in a project</h2>
+          </header>
+          <ol class="steps">
+            <li class="step">
+              <h3 class="qu-type-h4">Download the files</h3>
+              <p>The tokens and the components are two small CSS files. The JSON holds the same values for scripts and for Motion springs.</p>
+              <div class="files">
+                <a class="qu-button qu-button--primary qu-button--sm" href="tokens/quest-ui.css" download>quest-ui.css</a>
+                <a class="qu-button qu-button--secondary qu-button--sm" href="css/components.css" download>components.css</a>
+                <a class="qu-button qu-button--secondary qu-button--sm" href="tokens/tokens.json" download>tokens.json</a>
+              </div>
+            </li>
+            <li class="step">
+              <h3 class="qu-type-h4">Load them once</h3>
+              <div class="code">
+                <button class="code__copy" type="button" data-copy-code>Copy</button>
+<pre><code>@import "./quest-ui.css";
+@import "./components.css";</code></pre>
+              </div>
+            </li>
+            <li class="step">
+              <h3 class="qu-type-h4">Build with the names</h3>
+              <div class="code">
+                <button class="code__copy" type="button" data-copy-code>Copy</button>
+<pre><code>.quest-log {
+  padding: var(--qu-space-6);
+  border-radius: var(--qu-radius-xl);
+  background: var(--qu-surface-card);
+  color: var(--qu-text-body);
+  box-shadow: var(--qu-shadow-md);
+}</code></pre>
+              </div>
+            </li>
+            <li class="step">
+              <h3 class="qu-type-h4">Change a value in one place</h3>
+              <p>Edit <code>tokens/tokens.json</code> and run <code>npm run tokens</code>. The build checks every contrast pair first, then writes the CSS and this page's data. The same names are set up as variables and styles in Figma, so designs and code pick from one list.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <p>Quest UI is a side quest by Henry Wu.</p>
+        <ul class="footer__links">
+          <li><a href="https://henrywu.link/">Portfolio</a></li>
+          <li><a href="https://mini-island.vercel.app/">Quest Town</a></li>
+          <li><a href="https://github.com/henrywu96/quest-ui">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/min-tzu-wu-7910851b4/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

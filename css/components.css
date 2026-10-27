@@ -1,0 +1,182 @@
+/*
+ * Quest UI v0 components: buttons, cards and badges.
+ * Plain CSS classes built only from the tokens in tokens/quest-ui.css, so they work in React, in plain HTML
+ * or anywhere else. Load tokens/quest-ui.css first.
+ */
+
+/* ---------- Button ---------- */
+
+.qu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--qu-space-2);
+  height: var(--qu-size-control-md);
+  padding: 0 var(--qu-space-6);
+  border: 1px solid transparent;
+  border-radius: var(--qu-radius-md);
+  font-family: var(--qu-font-family-body);
+  font-size: var(--qu-font-size-md);
+  font-weight: var(--qu-font-weight-semibold);
+  line-height: var(--qu-font-line-height-none);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform var(--qu-duration-fast) var(--qu-ease-out),
+    box-shadow var(--qu-duration-fast) var(--qu-ease-out),
+    background-color var(--qu-duration-fast) var(--qu-ease-out);
+}
+.qu-button:hover { transform: translateY(-1px); }
+.qu-button:active { transform: translateY(0); }
+.qu-button:focus-visible {
+  outline: var(--qu-size-focus-width) solid var(--qu-focus-ring);
+  outline-offset: var(--qu-size-focus-offset);
+}
+.qu-button svg { width: 18px; height: 18px; flex: none; }
+
+/* the one main action on a screen */
+.qu-button--primary {
+  background: var(--qu-action-primary);
+  color: var(--qu-text-on-accent);
+  box-shadow: var(--qu-shadow-glow-coral);
+}
+
+/* other actions next to a primary one */
+.qu-button--secondary {
+  background: var(--qu-surface-card);
+  border-color: var(--qu-border-default);
+  color: var(--qu-text-heading);
+}
+.qu-button--secondary:hover { background: var(--qu-surface-inset); }
+
+/* quiet actions inside cards and toolbars */
+.qu-button--ghost {
+  background: transparent;
+  color: var(--qu-text-accent);
+}
+.qu-button--ghost:hover { background: var(--qu-surface-inset); }
+
+/* a square button with only an icon: give it an aria-label */
+.qu-button--icon {
+  width: var(--qu-size-control-sm);
+  height: var(--qu-size-control-sm);
+  padding: 0;
+  background: transparent;
+  color: var(--qu-text-heading);
+}
+.qu-button--icon:hover { background: var(--qu-surface-inset); }
+
+/* toggles and filters that float over pictures or the town */
+.qu-button--pill {
+  height: var(--qu-size-control-sm);
+  padding: 0 var(--qu-space-4);
+  border-radius: var(--qu-radius-full);
+  border-color: color-mix(in srgb, var(--qu-white) 80%, transparent);
+  background: var(--qu-surface-glass);
+  color: var(--qu-text-heading);
+  font-size: var(--qu-font-size-sm);
+  box-shadow: var(--qu-shadow-sm);
+  backdrop-filter: blur(var(--qu-glass-blur)) saturate(var(--qu-glass-saturate));
+  -webkit-backdrop-filter: blur(var(--qu-glass-blur)) saturate(var(--qu-glass-saturate));
+}
+.qu-button--pill[aria-pressed="true"] {
+  background: var(--qu-surface-dark);
+  border-color: var(--qu-surface-dark);
+  color: var(--qu-text-on-dark);
+}
+
+.qu-button--sm {
+  height: var(--qu-size-control-sm);
+  padding: 0 var(--qu-space-4);
+  font-size: var(--qu-font-size-sm);
+}
+
+.qu-button:disabled,
+.qu-button[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Card ---------- */
+
+.qu-card {
+  display: block;
+  padding: var(--qu-space-6);
+  border-radius: var(--qu-radius-lg);
+  color: var(--qu-text-body);
+}
+
+/* the default: content on the page */
+.qu-card--solid {
+  background: var(--qu-surface-card);
+  border: 1px solid var(--qu-border-default);
+}
+
+/* over the sky, a picture or the town */
+.qu-card--glass {
+  background: var(--qu-surface-glass);
+  border: 1px solid color-mix(in srgb, var(--qu-white) 70%, transparent);
+  box-shadow: var(--qu-shadow-md);
+  backdrop-filter: blur(var(--qu-glass-blur)) saturate(var(--qu-glass-saturate));
+  -webkit-backdrop-filter: blur(var(--qu-glass-blur)) saturate(var(--qu-glass-saturate));
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .qu-card--glass, .qu-button--pill { background: var(--qu-surface-card); }
+}
+
+/* a small fact box inside another card */
+.qu-card--inset {
+  padding: var(--qu-space-4);
+  border-radius: var(--qu-radius-md);
+  background: var(--qu-surface-inset);
+}
+
+.qu-card--lg {
+  padding: var(--qu-space-8);
+  border-radius: var(--qu-radius-xl);
+}
+
+/* a whole card that is a link */
+a.qu-card,
+.qu-card--link {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform var(--qu-duration-base) var(--qu-ease-out),
+    box-shadow var(--qu-duration-base) var(--qu-ease-out);
+}
+a.qu-card:hover,
+.qu-card--link:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--qu-shadow-lg);
+}
+a.qu-card:focus-visible,
+.qu-card--link:focus-visible {
+  outline: var(--qu-size-focus-width) solid var(--qu-focus-ring);
+  outline-offset: var(--qu-size-focus-offset);
+}
+
+/* ---------- Badge ---------- */
+
+.qu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--qu-space-1);
+  padding: var(--qu-space-1) var(--qu-space-2);
+  border-radius: var(--qu-radius-sm);
+  background: var(--qu-rarity-common-bg);
+  color: var(--qu-rarity-common-text);
+  font-family: var(--qu-font-family-body);
+  font-size: var(--qu-font-size-2xs);
+  font-weight: var(--qu-font-weight-semibold);
+  line-height: var(--qu-font-line-height-snug);
+  letter-spacing: var(--qu-font-tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.qu-badge--rare { background: var(--qu-rarity-rare-bg); color: var(--qu-rarity-rare-text); }
+.qu-badge--epic { background: var(--qu-rarity-epic-bg); color: var(--qu-rarity-epic-text); }
+.qu-badge--legendary { background: var(--qu-rarity-legendary-bg); color: var(--qu-rarity-legendary-text); }

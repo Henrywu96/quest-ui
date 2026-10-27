@@ -30,6 +30,7 @@ Quest UI v0 brings each of those down to a small set of named values, and the co
 | `tokens/quest-ui.css` | The same tokens as CSS custom properties, plus `.qu-type-*` text style classes. Generated, not edited by hand. |
 | `css/components.css` | Buttons, cards and rarity badges as plain CSS classes, built only from the tokens. |
 | `scripts/build-tokens.mjs` | Builds the CSS and the site's copy of the tokens, and checks colour contrast. No dependencies. |
+| `scripts/sync.mjs` | Copies the built CSS into the portfolio and Quest Town. |
 | `index.html`, `site/` | The documentation site. It draws its colour, contrast, type and motion sections from the tokens, so it always matches them. |
 
 The tokens are also set up as variables and styles in a Figma file, so designs and code use the same names.
